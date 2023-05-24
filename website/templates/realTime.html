@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+    
+<h2>Real Time</h2>
+
+</br>
+
+<div id="chart4"></div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+  // Initialize data array
+  var data = [];
+
+  // Define chart options
+  var options = {
+    series: [{
+      data: data.slice()
+    }],
+    chart: {
+      id: 'realtime',
+      height: 350,
+      type: 'line',
+      animations: {
+        enabled: false,
+        easing: 'linear',
+        dynamicAnimation: {
+          speed: 100
+        }
+      },
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    title: {
+      text: 'Temperatura em Tempo Real',
+      align: 'left',
+      style: {
+        color: '#999999'  // Set title color to light gray
+      }
+    },
+    markers: {
+      size: 0
+    },
+    xaxis: {
+      type: 'datetime',
+      labels: {
+        style: {
+          colors: ['#999999']  // Set x-axis label color to light gray
+        }
+      }
+    },
+    yaxis: {
+      max: 100,
+      labels: {
+        style: {
+          color: '#999999'  // Set y-axis label color to light gray
+        }
+      }
+    },
+    legend: {
+      show: true,
+      labels: {
+        colors: ['#999999']  // Set legend label color to light gray
+      }
+    },
+  };
+
+  // Variable to store the latest cpu_usage value
+  var cpuUsage1;
+
+  // Function to update the chart with the latest cpu_usage value
+  function updateChart() {
+    // Make an AJAX request to get the updated cpu_usage value
+    $.ajax({
+      url: '/get_updated_value',
+      type: 'GET',
+      success: function(response) {
+        cpuUsage1 = response.cpu_usage;
+        // Update the series data in the chart with the new cpu_usage value
+        chart.updateSeries([{ data: cpuUsage }]);
+      },
+      error: function(error) {
+        console.log('Error:', error);
+      }
+    });
+  }
+
+  // Update the chart every 1 second
+  setInterval(updateChart, 1000);
+
+  // Create the ApexCharts instance
+  var chart = new ApexCharts(document.querySelector("#chart4"), options);
+  chart.render();
+
+  // Update the data array and chart series
+  window.setInterval(function () {
+    var cpuUsage = cpuUsage1;
+    
+    var currentDate = new Date().getTime();
+    data.push({
+      x: currentDate,
+      y: cpuUsage
+    });
+    
+    // Limit the data array to show only the last 20 points
+    if (data.length > 20) {
+      data.shift();
+    }
+    
+    // Update the chart series with the updated data
+    chart.updateSeries([{ data: data.slice() }]);
+  }, 1000);
+</script>
+
+{% endblock %}

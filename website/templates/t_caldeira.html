@@ -1,0 +1,121 @@
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+    
+<h2>Caldeira</h2>
+
+
+</br>
+
+<div id="chart"></div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        var options = {
+                series: [],
+                chart: {
+                    height: 350,
+                    type: 'radialBar',
+                    toolbar: {
+                        show: true
+                    }
+                },
+
+        series: [{{ cpu_usage | safe }}],
+
+        plotOptions: {
+          radialBar: {
+            startAngle: -135,
+            endAngle: 135,
+             hollow: {
+              margin: 0,
+              size: '70%',
+              background: '#212529',
+              image: undefined,
+              imageOffsetX: 0,
+              imageOffsetY: 0,
+              position: 'front',
+              dropShadow: {
+                enabled: true,
+                top: 3,
+                left: 0,
+                blur: 4,
+                opacity: 0.24
+              }
+            },
+            track: {
+              background: '#ddd',
+              strokeWidth: '67%',
+              margin: 0, // margin is in pixels
+              dropShadow: {
+                enabled: true,
+                top: -3,
+                left: 0,
+                blur: 4,
+                opacity: 0.35
+              }
+            },
+        
+            dataLabels: {
+              show: true,
+              name: {
+                offsetY: -10,
+                show: true,
+                color: '#ddd',
+                fontSize: '17px'
+              },
+              value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#ddd',
+                fontSize: '36px',
+                show: true,
+              }
+            }
+          }
+        },
+        fill: {
+          type: 'gradient',
+          gradient: {
+            shade: 'dark',
+            type: 'horizontal',
+            shadeIntensity: 0.5,
+            gradientToColors: ['#fb000F'],
+            inverseColors: true,
+            opacityFrom: 1,
+            opacityTo: 1,
+            stops: [0, 100]
+          }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ['Nível %'],
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+        // Function to update the chart with the latest cpu_usage value
+        function updateChart() {
+        // Make an AJAX request to get the updated cpu_usage value
+        $.ajax({
+            url: '/get_updated_value',
+            type: 'GET',
+            success: function(response) {
+                var cpuUsage = response.cpu_usage;
+                // Update the series data in the chart with the new cpu_usage value
+                chart.updateSeries([cpuUsage]);
+            },
+            error: function(error) {
+                console.log('Error:', error);
+            }
+        });
+        }
+
+    // Update the chart every 1 second
+    setInterval(updateChart, 10000);
+
+    </script>
+    
+{% endblock %}

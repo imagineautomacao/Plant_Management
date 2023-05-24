@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}TRV{% endblock %} {% block content
+%}
+
+<h1>TRV</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Time</th>
+        <th scope="col">Temperatura</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in trv_data %}
+      <tr>
+        <td>{{ row.id }}</td>
+        <td>{{ row.time }}</td>
+        <td>{{ row.temp }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+{% endblock %}

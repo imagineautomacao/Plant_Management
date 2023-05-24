@@ -1,0 +1,351 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function updateValue() {
+            $.ajax({
+                url: '/get_updated_value',
+                type: 'GET',
+                success: function(response) {
+                    // Update the CPU usage on the page
+                    document.getElementById('cpu-usage-container').innerText = 'CPU Usage: ' + response.cpu_usage + '%';
+                }
+            });
+        }
+
+        // Update the value every second
+        setInterval(updateValue, 1000);
+    </script>
+
+<div id="cpu-usage-container">CPU Usage: </div>
+<div id="cpu-usage-container">{{ user.first_name }}</div>
+
+
+<!-- --------------------INICIO DA TABELA------------------ -->
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      Chiller
+    </div>
+    <div class="col">
+      TRV
+    </div>
+    <div class="col">
+      Paletizacao
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <!-- Chart -->
+      <div class="chart-container" style="width: 400px; height: 200px;">
+        <canvas id="TemperaturaChiller"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx1 = document.getElementById('TemperaturaChiller');
+
+        const labels1 = [
+          {% for row in trv_data %}
+            new Date('{{ row.time }}').toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+          {% endfor %}
+        ];
+        
+        const data1 = [
+          {% for row in trv_data %}
+            {{ row.temp }},
+          {% endfor %}
+        ];
+
+        // Reverse the labels and data arrays
+        labels1.reverse();
+        data1.reverse();
+
+        new Chart(ctx1, {
+          type: 'line',
+          data: {
+            labels: labels1,
+            datasets: [{
+              label: 'Temperatura Chiller',
+              data: data1,
+              fill: false,
+              borderWidth: 1,
+              tension: 0.5
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+      <!-- End of Chart -->
+    </div>
+    <div class="col">
+      <!-- Chart -->
+      <div class="chart-container" style="width: 400px; height: 200px;">
+        <canvas id="TemperaturaTRV"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx2 = document.getElementById('TemperaturaTRV');
+
+        const labels2 = [
+          {% for row in trv_data %}
+            new Date('{{ row.time }}').toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+          {% endfor %}
+        ];
+        
+        const data2 = [
+          {% for row in trv_data %}
+            {{ row.temp }},
+          {% endfor %}
+        ];
+
+        // Reverse the labels and data arrays
+        labels2.reverse();
+        data2.reverse();
+
+        new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: labels2,
+            datasets: [{
+              label: 'Temperatura TRV',
+              data: data2,
+              fill: false,
+              borderWidth: 1,
+              tension: 0.5
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+      <!-- End of Chart -->
+    </div>
+    <div class="col">
+      <!-- Chart -->
+      <div class="chart-container" style="width: 400px; height: 200px;">
+        <canvas id="TemperaturaPaletizacao"></canvas>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+      <script>
+        const ctx3 = document.getElementById('TemperaturaPaletizacao');
+
+        const labels3 = [
+          {% for row in trv_data %}
+            new Date('{{ row.time }}').toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}),
+          {% endfor %}
+        ];
+        
+        const data3 = [
+          {% for row in trv_data %}
+            {{ row.temp }},
+          {% endfor %}
+        ];
+
+        // Reverse the labels and data arrays
+        labels3.reverse();
+        data3.reverse();
+
+        new Chart(ctx3, {
+          type: 'line',
+          data: {
+            labels: labels3,
+            datasets: [{
+              label: 'Temperatura Paletizacao',
+              data: data3,
+              fill: false,
+              borderWidth: 1,
+              tension: 0.5
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+      <!-- End of Chart -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Caixa
+    </div>
+    <div class="col">
+      Poço 01
+    </div>
+    <div class="col">
+      Poço 02
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <!----------------------------------------------------------------------- START -->
+
+      <div id="chart4"></div>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+  // Initialize data array
+  var data = [];
+
+  // Define chart options
+  var options = {
+    series: [{
+      data: data.slice()
+    }],
+    chart: {
+      id: 'realtime',
+      height: 350,
+      type: 'line',
+      animations: {
+        enabled: false,
+        easing: 'linear',
+        dynamicAnimation: {
+          speed: 100
+        }
+      },
+      toolbar: {
+        show: false
+      },
+      zoom: {
+        enabled: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    title: {
+      text: 'Temperatura em Tempo Real',
+      align: 'left',
+      style: {
+        color: '#999999'  // Set title color to light gray
+      }
+    },
+    markers: {
+      size: 0
+    },
+    xaxis: {
+      type: 'datetime',
+      labels: {
+        style: {
+          colors: ['#999999']  // Set x-axis label color to light gray
+        }
+      }
+    },
+    yaxis: {
+      max: 100,
+      labels: {
+        style: {
+          color: '#999999'  // Set y-axis label color to light gray
+        }
+      }
+    },
+    legend: {
+      show: true,
+      labels: {
+        colors: ['#999999']  // Set legend label color to light gray
+      }
+    },
+  };
+
+  // Variable to store the latest cpu_usage value
+  var cpuUsage1;
+
+  // Function to update the chart with the latest cpu_usage value
+  function updateChart() {
+    // Make an AJAX request to get the updated cpu_usage value
+    $.ajax({
+      url: '/get_updated_value',
+      type: 'GET',
+      success: function(response) {
+        cpuUsage1 = response.cpu_usage;
+        // Update the series data in the chart with the new cpu_usage value
+        chart.updateSeries([{ data: cpuUsage }]);
+      },
+      error: function(error) {
+        console.log('Error:', error);
+      }
+    });
+  }
+
+  // Update the chart every 1 second
+  setInterval(updateChart, 1000);
+
+  // Create the ApexCharts instance
+  var chart = new ApexCharts(document.querySelector("#chart4"), options);
+  chart.render();
+
+  // Update the data array and chart series
+  window.setInterval(function () {
+    var cpuUsage = cpuUsage1;
+    
+    var currentDate = new Date().getTime();
+    data.push({
+      x: currentDate,
+      y: cpuUsage
+    });
+    
+    // Limit the data array to show only the last 20 points
+    if (data.length > 20) {
+      data.shift();
+    }
+    
+    // Update the chart series with the updated data
+    chart.updateSeries([{ data: data.slice() }]);
+  }, 1000);
+</script>
+      
+
+
+      <!------------------------------------------------------------------------ END -->
+    </div>
+
+
+
+    <div class="col">
+      <!------------------------------------------------------------------------- START       -->
+      
+    </script>
+
+      <!-- END  -->
+    </div>
+    <div class="col">
+      <!-- Paletizacao -->
+
+      <!--  -->
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

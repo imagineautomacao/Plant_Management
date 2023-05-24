@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+
+</br>
+
+<div class="container-lg">
+    <a class="btn btn-secondary" href="sign-up">Adicionar Usuário</a>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <!-- <th>ID</th> -->
+                <th>Name</th>
+                <th>Email</th>
+                <th>Access Level</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in user_data %}
+            <tr>
+                <!-- <td>{{ user.id }}</td> -->
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.access_level }}</td>
+                <td><a href="/delete/{{ user.id }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+  
+{% endblock %}

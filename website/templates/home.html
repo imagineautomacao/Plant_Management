@@ -1,0 +1,650 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+
+
+<!-- --------------------INICIO DA TABELA------------------ -->
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <h1>Chiller / Pré Chiller</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 1 -->
+      <div id="chart1">
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      </div>
+      <!-- End of Cell -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 2 -->
+      <div id="chart2">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      </div>
+      <!-- End of Chart -->
+    </div>
+    
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 3 -->
+      <div id="chart3">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      </div>
+      <!-- End of Chart -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 4 -->
+      <div id="chart4">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      </div>
+      <!-- End of Chart -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 5 -->
+      <div id="chart5">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      </div>
+      <!-- End of Chart -->
+    </div>
+  </div>
+</br>
+</br>
+  <div class="row">
+    <div class="col">
+      Enchimento Pré
+    </div>
+    <div class="col">
+      Renovação Pré
+    </div>
+    <div class="col">
+      Enchimento Chiller
+    </div>
+    <div class="col">
+      Renovação Chiller
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 4 Col 1 -->
+      <br>
+      <p style="color:rgb(255, 255, 255); font-size:40px;">40 m3</p>
+      <!-- End of Chart -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 4 Col 2 -->
+      <br>
+      <p style="color:rgb(255, 255, 255); font-size:40px;">2,51 l/frango</p>
+      <!-- END  -->
+    </div>
+    
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 4 Col 3 -->
+      <br>
+      <p style="color:rgb(255, 255, 255); font-size:40px;">40 m3</p>
+      <!-- END  -->
+    </div>
+    
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 4 Col 4 -->
+      <br>
+      <p style="color:rgb(255, 255, 255); font-size:40px;">2,54 l/frango</p>
+      <!-- END  -->
+    </div>
+    
+  </div>
+</div>
+
+<hr class="mt-2 mb-3"/>
+
+
+<script>
+  var options1 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [5],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "horizontal",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['T1 Pré Chiller ºC']
+};
+
+new ApexCharts(document.querySelector("#chart1"), options1).render();
+
+var options2 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [4],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['T2 Pré Chiller ºC']
+};
+
+new ApexCharts(document.querySelector("#chart2"), options2).render();
+
+var options3 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [5],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['T1 Chiller ºC']
+};
+
+new ApexCharts(document.querySelector("#chart3"), options3).render();
+
+var options4 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [4],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['T2 Chiller ºC']
+};
+
+new ApexCharts(document.querySelector("#chart4"), options4).render();
+
+var options5 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [3],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['T3 Chiller ºC']
+};
+
+new ApexCharts(document.querySelector("#chart5"), options5).render();
+
+var options6 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [67],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['Enchimento Pré m3']
+};
+
+new ApexCharts(document.querySelector("#chart6"), options6).render();
+
+var options7 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [67],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['Renovação Pré m3']
+};
+
+new ApexCharts(document.querySelector("#chart7"), options7).render();
+
+var options8 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [67],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['Enchimento Chiller m3']
+};
+
+new ApexCharts(document.querySelector("#chart8"), options8).render();
+
+var options9 = {
+  chart: {
+    height: 250,
+    type: "radialBar",
+  },
+
+  series: [67],
+  colors: ["#0d6efd"],
+  plotOptions: {
+    radialBar: {
+      startAngle: -135,
+      endAngle: 135,
+      hollow: {
+        margin: 0,
+        size: "70%",
+        background: "#293450"
+      },
+      track: {
+        dropShadow: {
+          enabled: true,
+          top: 2,
+          left: 0,
+          blur: 4,
+          opacity: 0.15
+        }
+      },
+      dataLabels: {
+        name: {
+          offsetY: -10,
+          color: "#fff",
+          fontSize: "13px"
+        },
+        value: {
+                formatter: function(val) {
+                  return parseInt(val);
+                },
+                color: '#fff',
+                fontSize: '30px',
+                show: true,
+        }
+      }
+    }
+  },
+  fill: {
+    type: "gradient",
+    gradient: {
+      shade: "dark",
+      type: "vertical",
+      gradientToColors: ["#20E647"],
+      stops: [0, 100]
+    }
+  },
+  stroke: {
+    lineCap: "round"
+  },
+  labels: ['Renovação Chiller m3']
+};
+
+new ApexCharts(document.querySelector("#chart9"), options9).render();
+
+</script>
+
+{% endblock %}
