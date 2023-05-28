@@ -5,6 +5,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db   ##means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
 
+nivel_acesso = 0
 
 auth = Blueprint('auth', __name__)
 
@@ -89,12 +90,13 @@ def login():
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
+                nivel_acesso = user.access_level
                 return redirect(url_for('views.home'))
             else:
                 flash('Incorrect password, try again.', category='error')
         else:
             flash('Email does not exist.', category='error')
-    session.permanent = True
+    session.permanent = False
 
     return render_template("login.html", user=current_user)
 

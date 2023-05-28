@@ -31,7 +31,10 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Temperaturas </a>
                 <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarScrollingDropdown">
                     <li><a class="dropdown-item" href="/t_chiller">Chiller</a></li>
-                    <li><a class="dropdown-item" href="/t_trv">Trv</a></li>
+                    {% if user.access_level == 5 %}
+                    <li><a class="dropdown-item" href="/t_trv">Tunel de Congelamento</a></li>
+                    {% endif %}
+                    
                     <li><a class="dropdown-item" href="/t_embsec">Emb. Secundária</a></li>
                     <li><a class="dropdown-item" href="/t_paletizacao">Paletização</a></li>
                     <li>
@@ -91,7 +94,7 @@
 
   <div class="container" data-bs-theme="dark">
     <div class="row">
-      <div class="col-md-12 col-sm-12 col-xm-12">
+      <div class="col-md-14 col-sm-14 col-xm-14">
         <div class="ml-auto mr-auto">
           {% block content %} 
           {% endblock %}

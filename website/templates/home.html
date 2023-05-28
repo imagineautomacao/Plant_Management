@@ -7,21 +7,24 @@
 <div class="container text-center">
   <div class="row">
     <div class="col">
-      <h1>Chiller / Pré Chiller</h1>
+      <p style="color:rgb(0, 150, 255); font-size:40px;">Chiller / Pré-Chiller</p>
     </div>
   </div>
+  <br>
   <div class="row">
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 1 -->
-      <div id="chart1">
-      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T1 Pré Chiller: {{ t1pre_data[-1].y }} °C</p>
+      <div id="chart">
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
       <!-- End of Cell -->
     </div>
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 2 -->
-      <div id="chart2">
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T2 Pré Chiller: {{ t2pre_data[-1].y }} °C</p>
+      <div id="chart1">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
       <!-- End of Chart -->
@@ -29,7 +32,8 @@
     
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 3 -->
-      <div id="chart3">
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T1 Chiller: {{ t1chi_data[-1].y }} °C</p>
+      <div id="chart2">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
       <!-- End of Chart -->
@@ -37,7 +41,8 @@
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 4 -->
-      <div id="chart4">
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T2 Chiller: {{ t2chi_data[-1].y }} °C</p>
+      <div id="chart3">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
       <!-- End of Chart -->
@@ -45,7 +50,8 @@
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 5 -->
-      <div id="chart5">
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T3 Chiller: {{ t3chi_data[-1].y }} °C</p>
+      <div id="chart4">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
       <!-- End of Chart -->
@@ -55,7 +61,7 @@
 </br>
   <div class="row">
     <div class="col">
-      Enchimento Pré
+      Enchimento Pré      
     </div>
     <div class="col">
       Renovação Pré
@@ -73,28 +79,28 @@
     <div class="col">
       <!-- -----------------------------------------------------------------Row 4 Col 1 -->
       <br>
-      <p style="color:rgb(255, 255, 255); font-size:40px;">43 m3</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">43 m3</p>
       <!-- End of Chart -->
     </div>
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 4 Col 2 -->
       <br>
-      <p style="color:rgb(255, 255, 255); font-size:40px;">2,51 l/frango</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">2,51 l/frango</p>
       <!-- END  -->
     </div>
     
     <div class="col">
       <!-- -----------------------------------------------------------------Row 4 Col 3 -->
       <br>
-      <p style="color:rgb(255, 255, 255); font-size:40px;">40 m3</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">40 m3</p>
       <!-- END  -->
     </div>
     
     <div class="col">
       <!-- -----------------------------------------------------------------Row 4 Col 4 -->
       <br>
-      <p style="color:rgb(255, 255, 255); font-size:40px;">2,54 l/frango</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">2,54 l/frango</p>
       <!-- END  -->
     </div>
     
@@ -104,314 +110,785 @@
 <hr class="mt-2 mb-3"/>
 
 
-<script>
-  var options1 = {
-  chart: {
-    height: 250,
-    type: "radialBar",
-  },
 
-  series: [5],
-  colors: ["#0d6efd"],
-  plotOptions: {
-    radialBar: {
-      startAngle: -135,
-      endAngle: 135,
-      hollow: {
-        margin: 0,
-        size: "70%",
-        background: "#293450"
-      },
-      track: {
-        dropShadow: {
-          enabled: true,
-          top: 2,
-          left: 0,
-          blur: 4,
-          opacity: 0.15
-        }
-      },
-      dataLabels: {
-        name: {
-          offsetY: -10,
-          color: "#fff",
-          fontSize: "13px"
+<!------------------------------------------------------------------------------------------------------------------TRV-->
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      <p style="color:rgb(0, 150, 255); font-size:40px;">Tunel de Congelamento</p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 1 -->
+      <p style="color:rgb(255, 255, 255); font-size:20px;">Produto</p>
+      <!-- End of Cell -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 2 -->
+      <p style="color:rgb(255, 255, 255); font-size:20px;">Entrada</p>
+      <!-- End of Chart -->
+    </div>
+    
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 3 -->
+      <p style="color:rgb(255, 255, 255); font-size:20px;">Saída</p>
+      <!-- End of Chart -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 4 -->
+      <p style="color:rgb(255, 255, 255); font-size:20px;">Tempo Atingido</p>
+      <!-- End of Chart -->
+    </div>
+
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 5 -->
+      <p style="color:rgb(255, 255, 255); font-size:20px;">Tempo Não Atingido</p>
+      <!-- End of Chart -->
+    </div>
+    
+    <div class="col">
+      <!-- -----------------------------------------------------------------Row 2 Col 5 -->
+      <p style="color:rgb(255, 255, 255); font-size:20px;">Total Presente</p>
+      <!-- End of Chart -->
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      Frango Inteiro      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Cortes      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Miúdos      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Exportação      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Mercado Interno      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Produto 6      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Produto 7      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Produto 8      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Produto 9      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      Produto 10      
+    </div>
+    <div class="col">
+      420
+    </div>
+    <div class="col">
+      380
+    </div>
+    <div class="col">
+      3644
+    </div>
+    <div class="col">
+      872
+    </div>
+    <div class="col">
+      4516
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+<div class="row">
+  <div class="col">
+    <!-- -----------------------------------------------------------------Row 2 Col 4 -->
+    <p style="color:rgb(255, 255, 255); font-size:20px;">Temperatura {{trv_data[-1].y}} °C</p>
+    <div id="chart5">
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    </div>
+    <!-- End of Chart -->
+  </div>
+
+  <div class="col">
+    <!-- -----------------------------------------------------------------Row 2 Col 5 -->
+    <p style="color:rgb(255, 255, 255); font-size:20px;">Ventilação</p>
+    <div id="chart6">
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    </div>
+    <!-- End of Chart -->
+  </div>
+
+  <div class="col">
+    <!-- -----------------------------------------------------------------Row 2 Col 5 -->
+    <p style="color:rgb(255, 255, 255); font-size:20px;">Automático / Manual / Desligado</p>
+    <div id="chart7">
+      <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    </div>
+    <!-- End of Chart -->
+  </div>
+</div>
+</br>
+  
+
+<hr class="mt-2 mb-3"/>
+
+
+<script>
+  var dates = {{ t1pre_data | tojson | safe }};
+  var options = {
+    series: [{
+        name: '',
+        data: dates
+    }],
+    chart: {
+        type: 'area',
+        stacked: false,
+        height: 200,
+        zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
         },
-        value: {
-                formatter: function(val) {
-                  return parseInt(val);
-                },
-                color: '#fff',
-                fontSize: '30px',
-                show: true,
+        toolbar: {
+            autoSelected: 'zoom'
         }
-      }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    markers: {
+        size: 0
+    },
+    title: {
+        text: '',
+        align: 'left',
+        style: {
+            color: '#B8B8B8'
+        }
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.5,
+            opacityTo: 0,
+            stops: [0, 90, 100]
+        }
+    },
+    yaxis: {
+        labels: {
+            style: {
+              colors: ['#fff'],
+              fontSize: '12px',
+            },
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        },
+        title: {
+            text: 'Temperatura',
+            style: {
+                color: '#B8B8B8'
+            }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '12px',
+            }
+        }
+    },
+    tooltip: {
+        shared: false,
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        }
     }
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "horizontal",
-      gradientToColors: ["#20E647"],
-      stops: [0, 100]
+};
+
+new ApexCharts(document.querySelector("#chart"), options).render();
+
+
+
+var dates1 = {{ t2pre_data | tojson | safe }};
+  var options1 = {
+    series: [{
+        name: '',
+        data: dates1
+    }],
+    chart: {
+        type: 'area',
+        stacked: false,
+        height: 200,
+        zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
+        },
+        toolbar: {
+            autoSelected: 'zoom'
+        }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    markers: {
+        size: 0
+    },
+    title: {
+        text: '',
+        align: 'left',
+        style: {
+            color: '#B8B8B8'
+        }
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.5,
+            opacityTo: 0,
+            stops: [0, 90, 100]
+        }
+    },
+    yaxis: {
+        labels: {
+            style: {
+              colors: ['#fff'],
+              fontSize: '12px',
+            },
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        },
+        title: {
+            text: 'Temperatura',
+            style: {
+                color: '#B8B8B8'
+            }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '12px',
+            }
+        }
+    },
+    tooltip: {
+        shared: false,
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        }
     }
-  },
-  stroke: {
-    lineCap: "round"
-  },
-  labels: ['T1 Pré Chiller ºC']
 };
 
 new ApexCharts(document.querySelector("#chart1"), options1).render();
 
-var options2 = {
-  chart: {
-    height: 250,
-    type: "radialBar",
-  },
-
-  series: [4],
-  colors: ["#0d6efd"],
-  plotOptions: {
-    radialBar: {
-      startAngle: -135,
-      endAngle: 135,
-      hollow: {
-        margin: 0,
-        size: "70%",
-        background: "#293450"
-      },
-      track: {
-        dropShadow: {
-          enabled: true,
-          top: 2,
-          left: 0,
-          blur: 4,
-          opacity: 0.15
-        }
-      },
-      dataLabels: {
-        name: {
-          offsetY: -10,
-          color: "#fff",
-          fontSize: "13px"
+var dates2 = {{ t1chi_data | tojson | safe }};
+  var options2 = {
+    series: [{
+        name: '',
+        data: dates2
+    }],
+    chart: {
+        type: 'area',
+        stacked: false,
+        height: 200,
+        zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
         },
-        value: {
-                formatter: function(val) {
-                  return parseInt(val);
-                },
-                color: '#fff',
-                fontSize: '30px',
-                show: true,
+        toolbar: {
+            autoSelected: 'zoom'
         }
-      }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    markers: {
+        size: 0
+    },
+    title: {
+        text: '',
+        align: 'left',
+        style: {
+            color: '#B8B8B8'
+        }
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.5,
+            opacityTo: 0,
+            stops: [0, 90, 100]
+        }
+    },
+    yaxis: {
+        labels: {
+            style: {
+              colors: ['#fff'],
+              fontSize: '12px',
+            },
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        },
+        title: {
+            text: 'Temperatura',
+            style: {
+                color: '#B8B8B8'
+            }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '12px',
+            }
+        }
+    },
+    tooltip: {
+        shared: false,
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        }
     }
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "vertical",
-      gradientToColors: ["#20E647"],
-      stops: [0, 100]
-    }
-  },
-  stroke: {
-    lineCap: "round"
-  },
-  labels: ['T2 Pré Chiller ºC']
 };
 
 new ApexCharts(document.querySelector("#chart2"), options2).render();
 
-var options3 = {
-  chart: {
-    height: 250,
-    type: "radialBar",
-  },
-
-  series: [5],
-  colors: ["#0d6efd"],
-  plotOptions: {
-    radialBar: {
-      startAngle: -135,
-      endAngle: 135,
-      hollow: {
-        margin: 0,
-        size: "70%",
-        background: "#293450"
-      },
-      track: {
-        dropShadow: {
-          enabled: true,
-          top: 2,
-          left: 0,
-          blur: 4,
-          opacity: 0.15
-        }
-      },
-      dataLabels: {
-        name: {
-          offsetY: -10,
-          color: "#fff",
-          fontSize: "13px"
+var dates3 = {{ t2chi_data | tojson | safe }};
+  var options3 = {
+    series: [{
+        name: '',
+        data: dates3
+    }],
+    chart: {
+        type: 'area',
+        stacked: false,
+        height: 200,
+        zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
         },
-        value: {
-                formatter: function(val) {
-                  return parseInt(val);
-                },
-                color: '#fff',
-                fontSize: '30px',
-                show: true,
+        toolbar: {
+            autoSelected: 'zoom'
         }
-      }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    markers: {
+        size: 0
+    },
+    title: {
+        text: '',
+        align: 'left',
+        style: {
+            color: '#B8B8B8'
+        }
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.5,
+            opacityTo: 0,
+            stops: [0, 90, 100]
+        }
+    },
+    yaxis: {
+        labels: {
+            style: {
+              colors: ['#fff'],
+              fontSize: '12px',
+            },
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        },
+        title: {
+            text: 'Temperatura',
+            style: {
+                color: '#B8B8B8'
+            }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '12px',
+            }
+        }
+    },
+    tooltip: {
+        shared: false,
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        }
     }
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "vertical",
-      gradientToColors: ["#20E647"],
-      stops: [0, 100]
-    }
-  },
-  stroke: {
-    lineCap: "round"
-  },
-  labels: ['T1 Chiller ºC']
 };
 
 new ApexCharts(document.querySelector("#chart3"), options3).render();
 
-var options4 = {
-  chart: {
-    height: 250,
-    type: "radialBar",
-  },
-
-  series: [4],
-  colors: ["#0d6efd"],
-  plotOptions: {
-    radialBar: {
-      startAngle: -135,
-      endAngle: 135,
-      hollow: {
-        margin: 0,
-        size: "70%",
-        background: "#293450"
-      },
-      track: {
-        dropShadow: {
-          enabled: true,
-          top: 2,
-          left: 0,
-          blur: 4,
-          opacity: 0.15
-        }
-      },
-      dataLabels: {
-        name: {
-          offsetY: -10,
-          color: "#fff",
-          fontSize: "13px"
+var dates4 = {{ t3chi_data | tojson | safe }};
+  var options4 = {
+    series: [{
+        name: '',
+        data: dates4
+    }],
+    chart: {
+        type: 'area',
+        stacked: false,
+        height: 200,
+        zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
         },
-        value: {
-                formatter: function(val) {
-                  return parseInt(val);
-                },
-                color: '#fff',
-                fontSize: '30px',
-                show: true,
+        toolbar: {
+            autoSelected: 'zoom'
         }
-      }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    markers: {
+        size: 0
+    },
+    title: {
+        text: '',
+        align: 'left',
+        style: {
+            color: '#B8B8B8'
+        }
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.5,
+            opacityTo: 0,
+            stops: [0, 90, 100]
+        }
+    },
+    yaxis: {
+        labels: {
+            style: {
+              colors: ['#fff'],
+              fontSize: '12px',
+            },
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        },
+        title: {
+            text: 'Temperatura',
+            style: {
+                color: '#B8B8B8'
+            }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '12px',
+            }
+        }
+    },
+    tooltip: {
+        shared: false,
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        }
     }
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "vertical",
-      gradientToColors: ["#20E647"],
-      stops: [0, 100]
-    }
-  },
-  stroke: {
-    lineCap: "round"
-  },
-  labels: ['T2 Chiller ºC']
 };
 
 new ApexCharts(document.querySelector("#chart4"), options4).render();
 
-var options5 = {
-  chart: {
-    height: 250,
-    type: "radialBar",
-  },
-
-  series: [3],
-  colors: ["#0d6efd"],
-  plotOptions: {
-    radialBar: {
-      startAngle: -135,
-      endAngle: 135,
-      hollow: {
-        margin: 0,
-        size: "70%",
-        background: "#293450"
-      },
-      track: {
-        dropShadow: {
-          enabled: true,
-          top: 2,
-          left: 0,
-          blur: 4,
-          opacity: 0.15
-        }
-      },
-      dataLabels: {
-        name: {
-          offsetY: -10,
-          color: "#fff",
-          fontSize: "13px"
+var dates5 = {{ trv_data | tojson | safe }};
+  var options5 = {
+    series: [{
+        name: '',
+        data: dates5
+    }],
+    chart: {
+        type: 'area',
+        stacked: false,
+        height: 200,
+        zoom: {
+            type: 'x',
+            enabled: true,
+            autoScaleYaxis: true
         },
-        value: {
-                formatter: function(val) {
-                  return parseInt(val);
-                },
-                color: '#fff',
-                fontSize: '30px',
-                show: true,
+        toolbar: {
+            autoSelected: 'zoom'
         }
-      }
+    },
+    dataLabels: {
+        enabled: false
+    },
+    markers: {
+        size: 0
+    },
+    title: {
+        text: '',
+        align: 'left',
+        style: {
+            color: '#B8B8B8'
+        }
+    },
+    fill: {
+        type: 'gradient',
+        gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.5,
+            opacityTo: 0,
+            stops: [0, 90, 100]
+        }
+    },
+    yaxis: {
+        labels: {
+            style: {
+              colors: ['#fff'],
+              fontSize: '15px',
+            },
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        },
+        title: {
+            text: 'Temperatura',
+            style: {
+                color: '#B8B8B8'
+            }
+        }
+    },
+    xaxis: {
+        type: 'datetime',
+        labels: {
+            style: {
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '15px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 400,
+              cssClass: 'apexcharts-xaxis-label',
+            }
+        }
+    },
+    tooltip: {
+        shared: false,
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2);
+            }
+        }
     }
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "vertical",
-      gradientToColors: ["#20E647"],
-      stops: [0, 100]
-    }
-  },
-  stroke: {
-    lineCap: "round"
-  },
-  labels: ['T3 Chiller ºC']
 };
 
 new ApexCharts(document.querySelector("#chart5"), options5).render();
 
 var options6 = {
   chart: {
-    height: 250,
+    height: 260,
     type: "radialBar",
   },
 
-  series: [67],
+  series: [100],
   colors: ["#0d6efd"],
   plotOptions: {
     radialBar: {
@@ -460,70 +937,99 @@ var options6 = {
   stroke: {
     lineCap: "round"
   },
-  labels: ['Enchimento Pré m3']
+  labels: ['Ventilação em %']
 };
 
 new ApexCharts(document.querySelector("#chart6"), options6).render();
 
+
+
 var options7 = {
-  chart: {
-    height: 250,
-    type: "radialBar",
-  },
-
-  series: [67],
-  colors: ["#0d6efd"],
-  plotOptions: {
-    radialBar: {
-      startAngle: -135,
-      endAngle: 135,
-      hollow: {
-        margin: 0,
-        size: "70%",
-        background: "#293450"
-      },
-      track: {
-        dropShadow: {
-          enabled: true,
-          top: 2,
-          left: 0,
-          blur: 4,
-          opacity: 0.15
-        }
-      },
-      dataLabels: {
-        name: {
-          offsetY: -10,
-          color: "#fff",
-          fontSize: "13px"
+          series: [60, 28, 10],
+          chart: {
+          type: 'donut',
         },
-        value: {
-                formatter: function(val) {
-                  return parseInt(val);
-                },
-                color: '#fff',
-                fontSize: '30px',
-                show: true,
-        }
-      }
-    }
-  },
-  fill: {
-    type: "gradient",
-    gradient: {
-      shade: "dark",
-      type: "vertical",
-      gradientToColors: ["#20E647"],
-      stops: [0, 100]
-    }
-  },
-  stroke: {
-    lineCap: "round"
-  },
-  labels: ['Renovação Pré m3']
-};
+        labels: ["Automático", "Manual", "Desligado"],
+        theme: {
+          monochrome: {
+            enabled: false
+          }
+        },
+        legend: {
+          show: true,
+          position: 'right',
+          fontSize: '20px',
+          labels: {
+            colors: undefined,
+            useSeriesColors: true
+          }
+        },
+        responsive: [{
+          breakpoint: 400,
+          options: {
+            chart: {
+              width: 100
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
 
-new ApexCharts(document.querySelector("#chart7"), options7).render();
+      new ApexCharts(document.querySelector("#chart7"), options7).render();
+
+
+// var options7 = {
+//           series: [62, 28, 10],
+//           chart: {
+//           type: 'donut',
+//         },
+//         plotOptions: {
+//           pie: {
+//             startAngle: 0,
+//             endAngle: 360,
+//             offsetY: 0
+//           }
+//         },
+//         labels: ["Automático", "Manual", "Desligado"],
+//         theme: {
+//           monochrome: {
+//             enabled: false
+//           }
+//         },
+//         legend: {
+//           show: true,
+//           position: 'right',
+//           fontSize: '20px',
+//           labels: {
+//             colors: undefined,
+//             align: 'left',
+//             useSeriesColors: true
+//           }
+//         },
+//         grid: {
+//           padding: {
+//             bottom: -80
+//           }
+//         },
+//         responsive: [{
+//           breakpoint: 480,
+//           options: {
+//             chart: {
+//               width: 200
+//             },
+//             legend: {
+//               show: false,
+//               position: 'left',
+//               style: {fill: '#ffffff', fontSize: 25}
+//             }
+//           }
+//         }]
+//         };
+
+//         new ApexCharts(document.querySelector("#chart7"), options7).render();
+        
 
 var options8 = {
   chart: {
@@ -645,6 +1151,9 @@ var options9 = {
 
 new ApexCharts(document.querySelector("#chart9"), options9).render();
 
+
+
 </script>
+
 
 {% endblock %}

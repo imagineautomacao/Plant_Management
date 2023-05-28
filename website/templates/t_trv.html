@@ -1,8 +1,9 @@
 {% extends "base.html" %}
+
 {% block title %}TRV{% endblock %}
 {% block content %}
 <br/>
-<h1 align="center">Trv</h1>
+<h1 align="center">Tunel de Congelamento</h1>
 <br/>
 
 <div class="container-lg">
@@ -109,10 +110,11 @@ var options = {
     yaxis: {
         labels: {
             style: {
-                colors: ['#B8B8B8']
+              colors: ['#fff'],
+              fontSize: '12px',
             },
             formatter: function (val) {
-                return val.toFixed(0);
+                return val.toFixed(2);
             }
         },
         title: {
@@ -126,7 +128,8 @@ var options = {
         type: 'datetime',
         labels: {
             style: {
-                colors: ['#ffffff']
+              colors: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
+              fontSize: '12px',
             }
         }
     },
@@ -134,7 +137,7 @@ var options = {
         shared: false,
         y: {
             formatter: function (val) {
-                return val.toFixed(0);
+                return val.toFixed(2);
             }
         }
     }

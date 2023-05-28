@@ -27,3 +27,43 @@ class Trv(db.Model):
     time = db.Column(db.DateTime(timezone=True), default=func.now())
     temp = db.Column(db.Float)
     extend_existing=True
+
+class T1Pre(db.Model):
+    __tablename__ = 't1pre'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    temp = db.Column(db.Float)
+    extend_existing=True
+
+class T2Pre(db.Model):
+    __tablename__ = 't2pre'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    temp = db.Column(db.Float)
+    extend_existing=True
+
+class T1Chi(db.Model):
+    __tablename__ = 't1chi'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    temp = db.Column(db.Float)
+    extend_existing=True
+
+class T2Chi(db.Model):
+    __tablename__ = 't2chi'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    temp = db.Column(db.Float)
+    extend_existing=True
+
+class T3Chi(db.Model):
+    __tablename__ = 't3chi'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    time = db.Column(db.DateTime(timezone=True), default=func.now())
+    temp = db.Column(db.Float)
+    extend_existing=True

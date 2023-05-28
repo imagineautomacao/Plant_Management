@@ -12,7 +12,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'mssql+pyodbc://lgautomacao:Lg300509%40@192.168.8.172/LG_CHILLER?driver=ODBC+Driver+17+for+SQL+Server'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=5)
+    app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=1)
     db.init_app(app)
 
     from .views import views
