@@ -79,6 +79,19 @@ def t_trv():
 
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 
+@auth.route('/settings', methods=['GET', 'POST'])
+def settings():
+    
+    return render_template("settings.html", user=current_user)
+
+@auth.route('/alarms', methods=['GET', 'POST'])
+def alarms():
+    
+    return render_template("alarms.html", user=current_user)
+
+
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':

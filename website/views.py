@@ -6,7 +6,7 @@ from turtle import bgcolor
 from xmlrpc.client import DateTime
 from flask import Blueprint, render_template, request, flash, jsonify, url_for, abort, redirect
 from flask_login import login_required, current_user
-from .models import Note, Trv, User, T1Pre, T2Pre, T1Chi, T2Chi, T3Chi
+from .models import Note, Trv, User, T1Pre, T2Pre, T1Chi, T2Chi, T3Chi, AlarmGroup, AlarmMessage
 from . import db
 import json
 import psutil
@@ -182,6 +182,30 @@ def users():
     
     user_data = User.query.all()
     return render_template("users.html", user=current_user, user_data=user_data)
+
+@views.route('/settings', methods=['GET', 'POST'])
+@login_required
+def settings():
+    if current_user.access_level != 5:
+        #abort(403)  # Access denied for non-admin users
+        return render_template("access_denied.html", user=current_user)
+    user_data = User.query.all()
+    return render_template("settings.html", user=current_user, user_data=user_data)
+
+@views.route('/access_denied', methods=['GET', 'POST'])
+def access_denied():
+    
+    return render_template("access_denied.html", user=current_user)
+    
+
+@views.route('/alarms', methods=['GET', 'POST'])
+@login_required
+def alarms():
+    
+    #alarm_data = Alarms.query.all()
+    alarm_group_data = AlarmGroup.query.order_by(AlarmGroup.id.desc()).all()
+    alarm_message_data = AlarmMessage.query.order_by(AlarmMessage.id.desc()).all()
+    return render_template("alarms.html", user=current_user, alarm_group_data=alarm_group_data, alarm_message_data=alarm_message_data)
 
 @views.route('/delete/<int:user_id>', methods=['GET', 'POST'])
 @login_required

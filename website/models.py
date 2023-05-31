@@ -19,6 +19,22 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
     access_level = db.Column(db.Integer)
     notes = db.relationship('Note')
+
+
+class AlarmMessage(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    group_id = db.Column(db.Integer)
+    message = db.Column(db.String(100))
+    alarmgroup_id = db.Column(db.Integer, db.ForeignKey('alarm_group.id'))
+
+
+class AlarmGroup(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    description = db.Column(db.String(100))
+    messages = db.relationship('AlarmMessage')#, backref='alarm_group', lazy=True)
+
+
+
    
 class Trv(db.Model):
     __tablename__ = 'trv'
