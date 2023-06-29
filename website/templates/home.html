@@ -14,7 +14,7 @@
   <div class="row">
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 1 -->
-      <p style="color:rgb(255, 255, 255); font-size:20px;">T1 Pré Chiller: {{ t1pre_data[-1].y }} °C</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T1 Pré Chiller: {{ t1pre_data[-1].a }} °C</p>
       <div id="chart">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
@@ -23,7 +23,7 @@
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 2 -->
-      <p style="color:rgb(255, 255, 255); font-size:20px;">T2 Pré Chiller: {{ t2pre_data[-1].y }} °C</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T2 Pré Chiller: {{ user.first_name }} °C</p>
       <div id="chart1">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
@@ -32,7 +32,7 @@
     
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 3 -->
-      <p style="color:rgb(255, 255, 255); font-size:20px;">T1 Chiller: {{ t1chi_data[-1].y }} °C</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T1 Chiller: {{ user.first_name }} °C</p>
       <div id="chart2">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
@@ -41,7 +41,7 @@
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 4 -->
-      <p style="color:rgb(255, 255, 255); font-size:20px;">T2 Chiller: {{ t2chi_data[-1].y }} °C</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T2 Chiller: {{ user.first_name }} °C</p>
       <div id="chart3">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
@@ -50,7 +50,7 @@
 
     <div class="col">
       <!-- -----------------------------------------------------------------Row 2 Col 5 -->
-      <p style="color:rgb(255, 255, 255); font-size:20px;">T3 Chiller: {{ t3chi_data[-1].y }} °C</p>
+      <p style="color:rgb(255, 255, 255); font-size:20px;">T3 Chiller: {{ user.first_name }} °C</p>
       <div id="chart4">
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
       </div>
@@ -479,7 +479,7 @@ new ApexCharts(document.querySelector("#chart"), options).render();
 
 
 
-var dates1 = {{ t2pre_data | tojson | safe }};
+var dates1 = {{ t1pre_data | tojson | safe }};
   var options1 = {
     series: [{
         name: '',
@@ -559,7 +559,7 @@ var dates1 = {{ t2pre_data | tojson | safe }};
 
 new ApexCharts(document.querySelector("#chart1"), options1).render();
 
-var dates2 = {{ t1chi_data | tojson | safe }};
+var dates2 = {{ t1pre_data | tojson | safe }};
   var options2 = {
     series: [{
         name: '',
@@ -639,7 +639,7 @@ var dates2 = {{ t1chi_data | tojson | safe }};
 
 new ApexCharts(document.querySelector("#chart2"), options2).render();
 
-var dates3 = {{ t2chi_data | tojson | safe }};
+var dates3 = {{ t1pre_data | tojson | safe }};
   var options3 = {
     series: [{
         name: '',
@@ -719,7 +719,7 @@ var dates3 = {{ t2chi_data | tojson | safe }};
 
 new ApexCharts(document.querySelector("#chart3"), options3).render();
 
-var dates4 = {{ t3chi_data | tojson | safe }};
+var dates4 = {{ t1pre_data | tojson | safe }};
   var options4 = {
     series: [{
         name: '',

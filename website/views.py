@@ -6,7 +6,7 @@ from turtle import bgcolor
 from xmlrpc.client import DateTime
 from flask import Blueprint, render_template, request, flash, jsonify, url_for, abort, redirect
 from flask_login import login_required, current_user
-from .models import Note, Trv, User, T1Pre, T2Pre, T1Chi, T2Chi, T3Chi, AlarmGroup, AlarmMessage
+from .models import Trv, User, CHILLER_INST
 from . import db
 import json
 import psutil
@@ -43,7 +43,6 @@ def trv():
         })
 
     if current_user.access_level == 5:
-        print("test")
         return render_template("t_trv.html", user=current_user, trv_data=chart_data)
     else:
         abort(403)
@@ -51,7 +50,7 @@ def trv():
 
 
 
-def generate_simulated_data():
+# def generate_simulated_data():
     start_date = datetime.datetime.now() - datetime.timedelta(days=5)
     end_date = datetime.datetime.now()
     current_date = start_date
@@ -90,14 +89,10 @@ def generate_simulated_data():
 def home():
 
     trv_data = Trv.query.order_by(Trv.time.desc()).limit(20).all()
-    t1pre_data = T1Pre.query.order_by(T1Pre.time.desc()).limit(10).all()
-    t2pre_data = T2Pre.query.order_by(T2Pre.time.desc()).limit(10).all()
-    t1chi_data = T1Chi.query.order_by(T1Chi.time.desc()).limit(10).all()
-    t2chi_data = T2Chi.query.order_by(T2Chi.time.desc()).limit(10).all()
-    t3chi_data = T3Chi.query.order_by(T3Chi.time.desc()).limit(10).all()
-    #generate_simulated_data()
+    t1pre_data = CHILLER_INST.query.order_by(CHILLER_INST.DATA.desc()).limit(20).all()
+    
 
-    # Convert data to the desired format for the chart and reverse the order
+    #Convert data to the desired format for the chart and reverse the order
     chart_data = []
     for data_point in trv_data[::-1]:
         chart_data.append({
@@ -108,39 +103,43 @@ def home():
     chart_data1 = []
     for data_point in t1pre_data[::-1]:
         chart_data1.append({
-            'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
-            'y': data_point.temp
+            'a': data_point.T1_PRE,  # Format the time as desired
+            'b': data_point.T2_PRE,
+            'c': data_point.T1_CHILLER,
+            'd': data_point.T2_CHILLER,
+            'e': data_point.T3_CHILLER
         })
+    print(chart_data1)
     
-    chart_data2 = []
-    for data_point in t2pre_data[::-1]:
-        chart_data2.append({
-            'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
-            'y': data_point.temp
-        })
+    # chart_data2 = []
+    # for data_point in t2pre_data[::-1]:
+    #     chart_data2.append({
+    #         'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
+    #         'y': data_point.temp
+    #     })
     
-    chart_data3 = []
-    for data_point in t1chi_data[::-1]:
-        chart_data3.append({
-            'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
-            'y': data_point.temp
-        })
+    # chart_data3 = []
+    # for data_point in t1chi_data[::-1]:
+    #     chart_data3.append({
+    #         'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
+    #         'y': data_point.temp
+    #     })
 
-    chart_data4 = []
-    for data_point in t2chi_data[::-1]:
-        chart_data4.append({
-            'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
-            'y': data_point.temp
-        })
+    # chart_data4 = []
+    # for data_point in t2chi_data[::-1]:
+    #     chart_data4.append({
+    #         'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
+    #         'y': data_point.temp
+    #     })
     
-    chart_data5 = []
-    for data_point in t3chi_data[::-1]:
-        chart_data5.append({
-            'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
-            'y': data_point.temp
-        })
+    # chart_data5 = []
+    # for data_point in t3chi_data[::-1]:
+    #     chart_data5.append({
+    #         'x': data_point.time.strftime('%Y-%m-%d %H:%M'),  # Format the time as desired
+    #         'y': data_point.temp
+    #     })
 
-    return render_template("home.html", user=current_user, trv_data=chart_data, t1pre_data=chart_data1, t2pre_data=chart_data2, t1chi_data=chart_data3, t2chi_data=chart_data4, t3chi_data=chart_data5)
+    return render_template("home.html", user=current_user, trv_data=chart_data, t1pre_data=chart_data1)
 
 
 
